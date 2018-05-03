@@ -5,7 +5,7 @@
     
 # Java2s
 > # Example Code
-Focus: **ver_1** *and* **ver_2**
+- Focus: **ver_1** *and* **ver_2**
 http://www.java2s.com/Tutorials/Java/Java_Design_Patterns/0170__Java_Observer_Pattern.htm
 
 > # Medium
