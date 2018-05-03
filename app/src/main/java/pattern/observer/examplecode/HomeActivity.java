@@ -1,22 +1,28 @@
 package pattern.observer.examplecode;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import pattern.observer.examplecode.b_Student.Student;
-import pattern.observer.examplecode.c_view.Activity1;
-import pattern.observer.examplecode.c_view.Activity2;
-import pattern.observer.examplecode.c_view.Activity3;
-import pattern.observer.examplecode.d_another_object_affect.ActivityO_1;
-import pattern.observer.examplecode.d_another_object_affect.ActivityO_2;
-import pattern.observer.examplecode.d_another_object_affect.ActivityO_3;
+import java.util.ArrayList;
+import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+import pattern.observer.examplecode.a_AbstractStudent.Student;
+import pattern.observer.examplecode.b_complementary_method.Observer;
+import pattern.observer.examplecode.c_view.Activity1;
+
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, Student{
 
     private Button btnChanged, btnActivity1, btnActivity2, btnActivity3;
+    private List<Observer> observers;
+
+    private Activity1 mActivity1;
+
+    public HomeActivity() {
+        observers = new ArrayList<>();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +38,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnActivity2.setOnClickListener(this);
         btnActivity3.setOnClickListener(this);
 
+        mActivity1 = Activity1.getInstance();
 
+        this.register(mActivity1);
     }
 
-    public static String VALUE = "Check";
+    public static boolean VALUE = true;
 
     @Override
     public void onClick(View v) {
-        // Validate Double Click
         switch (v.getId()) {
             case R.id.btnChanged:
                 executeChanges();
@@ -47,21 +54,30 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnActivity1:
                 startActivity(new Intent(HomeActivity.this, Activity1.class));
                 break;
-            case R.id.btnActivity2:
-                startActivity(new Intent(HomeActivity.this, Activity2.class));
-                break;
-            case R.id.btnActivity3:
-                startActivity(new Intent(HomeActivity.this, Activity3.class));
-                break;
         }
     }
 
     private void executeChanges() {
-        Student student = new Student();
-        new ActivityO_1(student);
-        new ActivityO_2(student);
-        new ActivityO_3(student);
-        student.setName("Nguyen Van Vuong");
-        btnChanged.setText(student.getName());
+        btnChanged.setText("ON");
+        notifyObservers();
+    }
+
+    @Override
+    public void register(Observer observer) {
+        if (!observers.contains(observer)) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void unregister(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (final Observer observer : observers) {
+            observer.update(VALUE);
+        }
     }
 }
