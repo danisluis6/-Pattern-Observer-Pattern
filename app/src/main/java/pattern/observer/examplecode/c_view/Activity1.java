@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import pattern.observer.examplecode.R;
 
-public class Activity1 extends AppCompatActivity {
+public class Activity1 extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
