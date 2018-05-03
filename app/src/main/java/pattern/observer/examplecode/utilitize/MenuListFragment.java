@@ -28,8 +28,8 @@ public class MenuListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container,
                 false);
-        ivMenuUserProfilePhoto = view.findViewById(R.id.ivMenuUserProfile);
         NavigationView vNavigation = view.findViewById(R.id.vNavigation);
+        ivMenuUserProfilePhoto = vNavigation.getHeaderView(0).findViewById(R.id.ivMenuUserProfile);
         vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
