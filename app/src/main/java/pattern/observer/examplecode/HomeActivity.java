@@ -10,6 +10,9 @@ import pattern.observer.examplecode.b_Student.Student;
 import pattern.observer.examplecode.c_view.Activity1;
 import pattern.observer.examplecode.c_view.Activity2;
 import pattern.observer.examplecode.c_view.Activity3;
+import pattern.observer.examplecode.d_another_object_affect.ActivityO_1;
+import pattern.observer.examplecode.d_another_object_affect.ActivityO_2;
+import pattern.observer.examplecode.d_another_object_affect.ActivityO_3;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -28,6 +31,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnActivity1.setOnClickListener(this);
         btnActivity2.setOnClickListener(this);
         btnActivity3.setOnClickListener(this);
+
+
     }
 
     public static String VALUE = "Check";
@@ -53,6 +58,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void executeChanges() {
         Student student = new Student();
+        new ActivityO_1(student);
+        new ActivityO_2(student);
+        new ActivityO_3(student);
         student.setName("Nguyen Van Vuong");
         btnChanged.setText(student.getName());
     }

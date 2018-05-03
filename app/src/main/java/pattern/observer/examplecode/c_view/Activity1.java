@@ -1,7 +1,7 @@
 package pattern.observer.examplecode.c_view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import pattern.observer.examplecode.R;
 
