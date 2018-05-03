@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Example Code</string>
+    <string name="info_observer">Observer pattern is used to notify its depenedent objects if one object is modified</string>
+    <string name="activity_1">Activity 1</string>
+    <string name="activity_2">Activity 2</string>
+    <string name="activity_3">Activity 3</string>
+    <string name="btn">Default</string>
+</resources>
